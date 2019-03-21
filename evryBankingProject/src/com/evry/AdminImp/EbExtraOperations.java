@@ -6,6 +6,7 @@ public  class EbExtraOperations extends EbadminOperations{
 	public int eb_addMoney() {
 		// TODO Auto-generated method stub
 		System.out.println("eb_addMoney");
+		
 		return 0;
 	}
 

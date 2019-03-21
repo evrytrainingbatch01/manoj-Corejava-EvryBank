@@ -19,16 +19,13 @@ public class EbcustomerCRUDOperations extends EbadminOperations{
 	Scanner myObj = new Scanner(System.in);
 	@Override
 	public List<Map<String,Object>> eb_getAllCustomers() {
-		// TODO Auto-generated method stub
-		//System.out.println("-----------------eb_getAllCustomers method-------------------------------");
+		
 		List<Map<String,Object>> list= new ArrayList<Map<String,Object>>();
 		  try {
 			  result=connection.getQuery("select * from customer");
-		 // System.out.println("result-----"+result);
-		  //result.absolute(3);
 		  while (result.next()) {
 			  Map<String,Object> tempmap= new HashMap<String,Object>();
-			  System.out.println("firstname-- "+result.getString("firstname"));
+			  System.out.println("Name-- "+result.getString("firstname"));
 			  tempmap.put("Id",result.getInt("id"));
 			  tempmap.put("Firstname",result.getString("firstname"));
 			  tempmap.put("Lastname",result.getString("lastname"));
@@ -63,8 +60,7 @@ public class EbcustomerCRUDOperations extends EbadminOperations{
 		
 		  try {
 		  
-		  res=connection.
-		  update("insert into customer (firstname,lastname,age,city,country,mobile_num,email_id,password)"
+		  res=connection.insert("insert into customer (firstname,lastname,age,city,country,mobile_num,email_id,balance,acc_userType,account_num,password)"
 		  +
 		  " values('"+returnmap.get("firstName")+"',"
 		  		+ "'"+returnmap.get("lastName")+"',"
@@ -73,8 +69,32 @@ public class EbcustomerCRUDOperations extends EbadminOperations{
 		  		+ "'"+returnmap.get("country")+"',"
 		  		+ "'"+returnmap.get("mobileNum")+"',"
 		  		+ "'"+returnmap.get("emailId")+"',"
+		  		+ ""+returnmap.get("balance")+","
+		  		+ ""+returnmap.get("usertype")+","
+		  		+ ""+returnmap.get("account_num")+","
 		  		+ "'"+returnmap.get("password")+"');"
-		  ); } catch (SQLException e) {
+		  );
+		  int acc_id=0;
+		  if(res>0) {
+			  String qry="select * from account where acc_id= (select max(acc_id) from account order by acc_id desc)";
+			  ResultSet result1= connection.getQuery(qry);
+			  while (result1.next()) {
+				  acc_id= result1.getInt("acc_id");
+				
+			}
+			  System.out.println(acc_id);
+			 int res1=connection.insert("insert into account (acc_account_num,acc_customerId,acc_balance,acc_loan,acc_approval,acc_userType)"
+					  + " values('"+returnmap.get("account_num")+"',"
+					  		+ ""+acc_id+","
+					  		+ ""+returnmap.get("balance")+",0,0,"
+					  		+ ""+returnmap.get("usertype")+""
+					  		+ ");"
+					  );
+		  }else {
+			  
+		  }
+		  
+		  } catch (SQLException e) {
 			  // TODO Auto-generated catch block
 		  e.printStackTrace(); 
 		  }

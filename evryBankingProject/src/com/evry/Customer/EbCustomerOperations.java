@@ -1,15 +1,18 @@
 package com.evry.Customer;
 
+import java.util.List;
+import java.util.Map;
+
 public interface EbCustomerOperations {
 	
-	public void getAccountDetails();
+	public List<Map<String, Object>> Eb_getAccountDetails(int custId);
 	
-	public void addMoney();
+	public int Eb_addMoney(int custId);
 	
-	public void sendMoney();
+	public int Eb_sendMoney(int custId);
 	
-	public void withDrawMoney();
+	public int Eb_withDrawMoney(int custId);
 	
-	public void requistingLoan();
+	public int Eb_requistingLoan(int custId);
 
 }
