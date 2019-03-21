@@ -11,7 +11,7 @@ public class EbAdminSubMenu {
 		switch (num) {
 		case 1:
 			System.out.println("eb_getAllCustomers method");
-			selectedNum=crudObj.eb_getAllCustomers();
+		//	selectedNum=crudObj.eb_getAllCustomers();
 			
 			break;
 		case 2:

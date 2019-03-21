@@ -41,6 +41,11 @@ public class DataBaseConnection {
     public ResultSet getQuery(String query) throws SQLException{
         statement = db.conn.createStatement();
         ResultSet res = statement.executeQuery(query);
+		/*
+		 * while (res.next()) { System.out.println(); res.getString("firstname");
+		 * 
+		 * }
+		 */
         return res;
     }
     /**
@@ -52,6 +57,19 @@ public class DataBaseConnection {
     public int insert(String insertQuery) throws SQLException {
         statement = db.conn.createStatement();
         int result = statement.executeUpdate(insertQuery);
+        return result;
+ 
+    }
+    
+    public int update(String updateQuery) throws SQLException {
+        statement = db.conn.createStatement();
+        int result = statement.executeUpdate(updateQuery);
+        return result;
+ 
+    }
+    public int delete(String deleteQuery) throws SQLException {
+        statement = db.conn.createStatement();
+        int result = statement.executeUpdate(deleteQuery);
         return result;
  
     }

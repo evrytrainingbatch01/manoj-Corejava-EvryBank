@@ -1,10 +1,13 @@
 package com.evry.Admin;
 
+import java.util.List;
+import java.util.Map;
+
 public interface EbAdminOperations {
 	
 	/**CRUD opration to customer**/
 	
-	  public int eb_getAllCustomers();
+	  public List<Map<String, Object>> eb_getAllCustomers();
 	  
 	  public int eb_addNewCustomer();
 	  
