@@ -25,7 +25,7 @@ public class DataBaseConnection {
      * @return MysqlConnect Database connection object
      */
     public static synchronized DataBaseConnection getDbCon() {
-    	System.out.println("get conn------------------------------------------");
+    //	System.out.println("get conn------------------------------------------");
         if ( db == null ) {
             db = new DataBaseConnection();
         }

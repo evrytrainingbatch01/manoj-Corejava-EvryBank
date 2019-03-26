@@ -10,23 +10,21 @@ public class EntryEvryBank {
 
 	public static void main(String[] args) {
 
-		// TODO Auto-generated method stub
-		String userName;
-		String Password;
-		EbAdminMenuOptions mainmenu = new EbAdminMenuOptions();
-		boolean checkLogin;
+		/*
+		 * // TODO Auto-generated method stub String userName; String Password;
+		 * EbAdminMenuOptions mainmenu = new EbAdminMenuOptions(); boolean checkLogin;
+		 */
 		System.out.println("Welcome to Evry India Bank ");
 		System.out.println("Log In ");
 		Scanner myObj = new Scanner(System.in);
 		Scanner myObj1 = new Scanner(System.in);
 		boolean Exit = true;
 		while (Exit) {
-			System.out.println("Enter number For Menu :");
+			System.out.println("Enter number For LogIn :");
 			System.out.println("1 -> Admin LogIn ");
 			System.out.println("2 -> Customer LogIn");
-			System.out.println("3 -> Exit");
+			System.out.println("3 -> Logout");
 			int selectedValue = myObj.nextInt();
-			System.out.println("selected Number is: " + selectedValue);
 			switch (selectedValue) {
 			case 1:
 				EntryMenuOptions.Menu();

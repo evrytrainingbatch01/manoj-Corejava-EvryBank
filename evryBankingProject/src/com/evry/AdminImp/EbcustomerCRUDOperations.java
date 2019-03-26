@@ -25,7 +25,7 @@ public class EbcustomerCRUDOperations extends EbadminOperations{
 			  result=connection.getQuery("select * from customer");
 		  while (result.next()) {
 			  Map<String,Object> tempmap= new HashMap<String,Object>();
-			  System.out.println("Name-- "+result.getString("firstname"));
+			 // System.out.println("Name-- "+result.getString("firstname"));
 			  tempmap.put("Id",result.getInt("id"));
 			  tempmap.put("Firstname",result.getString("firstname"));
 			  tempmap.put("Lastname",result.getString("lastname"));
@@ -56,7 +56,7 @@ public class EbcustomerCRUDOperations extends EbadminOperations{
 		int res=0;
 		Map<String,Object> returnmap= SetValuesForCustomer.setValues();
 		//CustomerPOJO cpojo=new CustomerPOJO();
-		System.out.println("FirstName---"+returnmap.get("firstName"));
+		System.out.println("Name---"+returnmap.get("firstName"));
 		
 		  try {
 		  

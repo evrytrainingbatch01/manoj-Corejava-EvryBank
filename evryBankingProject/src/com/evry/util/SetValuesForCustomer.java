@@ -14,43 +14,43 @@ public class SetValuesForCustomer {
 		System.out.println("please Enter the New Customer Details");
 		System.out.println("------------------------------------------------------");
 		
-		System.out.println("Enetr First Name :");
+		System.out.println("Enter First Name :");
 		String firstName = myObj.nextLine(); 
 		cpojo.setCustomerFirstName(firstName);
 		
-		System.out.println("Enetr Last Name :");
+		System.out.println("Enter Last Name :");
 		String lastName = myObj.nextLine(); 
 		cpojo.setCustomerLastName(lastName);
 		
-		System.out.println("Enetr Password :");
+		System.out.println("Enter Password :");
 		String password = myObj.nextLine(); 
 		cpojo.setCustomerPassword(password);
 		
-		System.out.println("Enetr Mobile Number :");
+		System.out.println("Enter Mobile Number :");
 		String mobileNum = myObj.nextLine(); 
 		cpojo.setCustomerMobileNum(mobileNum);
 		
-		System.out.println("Enetr EmailId :");
+		System.out.println("Enter EmailId :");
 		String emailId = myObj.nextLine(); 
 		cpojo.setCustomerEmailId(emailId);
 		
-		System.out.println("Enetr Age :");
+		System.out.println("Enter Age :");
 		int age = myObj.nextInt(); 
 		cpojo.setCustomerAge(age);
 		
-		System.out.println("Enetr City:");
+		System.out.println("Enter City and ");
 		String city = myObj.nextLine(); 
 		cpojo.setCustomerCity(city);
 		
-		System.out.println("Enetr Country :");
+		System.out.println("Enter Country :");
 		String country = myObj.nextLine(); 
 		cpojo.setCustomerCountry(country);
 		
-		System.out.println("Enetr User Type 1-Admin, 2-Customer :");
+		System.out.println("Enter User Type 1-Admin, 2-Customer :");
 		int usertype = myObj.nextInt(); 
 		cpojo.setCustomerAge(usertype);
 		
-		System.out.println("Enetr Balance :");
+		System.out.println("Enter Balance :");
 		int balance = myObj.nextInt(); 
 		cpojo.setCustomerAge(balance);
 		

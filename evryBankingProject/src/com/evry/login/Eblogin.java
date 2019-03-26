@@ -18,20 +18,14 @@ public class Eblogin {
 //	static String password="manoj@123";
 	public static boolean checkLoginCredentials(String uname, String pass) {
 		boolean response=true;
-		//System.out.println("uname "+uname);
-		//System.out.println("pass "+pass);
 		Map<String,Object> tempmap= new HashMap<String,Object>();
 	
 		  try {
 			  result=connection.getQuery("select * from customer   where firstname='"+uname+"' and password='"+pass+"'");
 		  while (result.next()) {
-			  System.out.println("firstname-- "+result.getString("firstname"));
 			  tempmap.put("Id",result.getInt("id"));
 			  tempmap.put("name",result.getString("firstname"));
-
 			  tempmap.put("password",result.getString("password"));
-
-			  
 		}
 		  if(tempmap.get("name").equals(uname) && tempmap.get("password").equals(pass)) {
 			  response= true;
@@ -46,15 +40,10 @@ public class Eblogin {
 		return response;
 	}
 	public static Map<String,Object> checkUserRole(String uname, String pass) {
-		boolean response=true;
-		System.out.println("uname "+uname);
-		System.out.println("pass "+pass);
 		Map<String,Object> tempmap= new HashMap<String,Object>();
-	
 		  try {
 			  result=connection.getQuery("select * from customer where firstname='"+uname+"' and password='"+pass+"'");
 		  while (result.next()) {
-			  System.out.println("acc_userType-- "+result.getString("acc_userType"));
 			  tempmap.put("Id",result.getInt("id"));
 			  tempmap.put("name",result.getString("firstname"));
 			  tempmap.put("password",result.getString("password"));

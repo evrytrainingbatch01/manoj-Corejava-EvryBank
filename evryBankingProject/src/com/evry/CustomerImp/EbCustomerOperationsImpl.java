@@ -67,7 +67,7 @@ public class EbCustomerOperationsImpl implements EbCustomerOperations {
 			int newValuetoUpdate=(peviousBal+Amount);
 			 int  res1=connection.update("update customer set balance="+newValuetoUpdate+" where id="+custId+"");
 			  if(res1>0) {
-				  res=connection.update("update account set balance="+newValuetoUpdate+" where acc_customerId="+custId+"");
+				  res=connection.update("update account set acc_balance="+newValuetoUpdate+" where acc_customerId="+custId+"");
 			  }else {
 				  res=0;
 			  }
@@ -86,37 +86,62 @@ public class EbCustomerOperationsImpl implements EbCustomerOperations {
 		System.out.println("Enter Customer Name to Trasform the Money :");
 		String ToCustName=	myObj.nextLine();
 		try {
-			result=connection.getQuery("select * from customer where firstname="+ToCustName+"");
+			result=connection.getQuery("select * from customer where firstname='"+ToCustName+"'");
 		while(result.next()) {
-			  //System.out.println("balanace-- "+result.getInt("balanace"));
+			  System.out.println("balanace-- "+result.getInt("balance"));
 			  Map<String,Object> tempmap= new HashMap<String,Object>();
 			 // System.out.println("firstname-- "+result.getString("firstname"));
 			  tempmap.put("Id",result.getInt("id"));
-			  tempmap.put("firstname",result.getInt("firstname"));
-			  tempmap.put("balanace",result.getInt("balanace"));
+			  tempmap.put("firstname",result.getString("firstname"));
+			  tempmap.put("balanace",result.getInt("balance"));
 			  
-			  System.out.println("Enter Customer Amount to Credit Money :");
+			  System.out.println("Enter Amount to transform :");
 			  int Amount=	myObj.nextInt();
 			  int TopeviousBal=(int) tempmap.get("balanace");
 			  int ToCustId=(int) tempmap.get("Id");
+			  int peviousBal=0;
 			  try {
-				  int newValuetoUpdate=(TopeviousBal+Amount);
-				 int  res1=connection.update("update customer set balance="+newValuetoUpdate+" where id="+ToCustId+"");
-				  if(res1>0) {
-					  res=connection.update("update account set balance="+newValuetoUpdate+" where acc_customerId="+ToCustId+"");
-				  }else {
-					  res=0;
-				  }
+				  
+				ResultSet	result1=connection.getQuery("select balance from customer where id="+custId+"");
+					while(result1.next()) {
+						  System.out.println("balanace-- "+result1.getInt("balance"));
+						  peviousBal=result1.getInt("balance");
+					
+					}
+					int newValuetoUpdate1=(peviousBal-Amount);
+					 int  res1=connection.update("update customer set balance="+newValuetoUpdate1+" where id="+custId+"");
+					  if(res1>0) {
+						int  res2=connection.update("update account set acc_balance="+newValuetoUpdate1+" where acc_customerId="+custId+"");
+						if(res2>0) {
+						  int newValuetoUpdate=(TopeviousBal+Amount);
+							 int  res3=connection.update("update customer set balance="+newValuetoUpdate+" where id="+ToCustId+"");
+							  if(res3>0) {
+								  res=connection.update("update account set acc_balance="+newValuetoUpdate+" where acc_customerId="+ToCustId+"");
+								  System.out.println("result plz---- "+res);
+							  }else {
+								  System.out.println("inside else1");
+								  //res=0;
+							  }
+					}
+					  }else {
+						  System.out.println("inside else2");
+						  //res=0;
+					  }
+				  
+				  
+				  
+				  
+
 				 
 			  } catch (SQLException e) {
-				  res=0;
+				  //res=0;
 				  // TODO Auto-generated catch block
 				  e.printStackTrace();
 			  }
 		
 		}
 		} catch (SQLException e1) {
-			res=0;
+			//res=0;
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
@@ -140,7 +165,7 @@ public class EbCustomerOperationsImpl implements EbCustomerOperations {
 			int newValuetoUpdate=(peviousBal-Amount);
 			 int  res1=connection.update("update customer set balance="+newValuetoUpdate+" where id="+custId+"");
 			  if(res1>0) {
-				  res=connection.update("update account set balance="+newValuetoUpdate+" where acc_customerId="+custId+"");
+				  res=connection.update("update account set acc_balance="+newValuetoUpdate+" where acc_customerId="+custId+"");
 			  }else {
 				  res=0;
 			  }
@@ -155,9 +180,20 @@ public class EbCustomerOperationsImpl implements EbCustomerOperations {
 
 	@Override
 	public int Eb_requistingLoan(int custId) {
+		int res=0;
+		System.out.println("from customer Eb_requistingLoan method---");
+		System.out.println("Enter How much Amount want to Request");
+		int amount=myObj.nextInt();
+		
+		 try {
+			res=connection.update("update account set acc_loan_Amount_req="+amount+",acc_loan=1  where acc_customerId="+custId+"");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
-		return 0;
+		return res;
 		
 	}
 

@@ -40,8 +40,9 @@ public class EntryMenuOptions {
 	    	}else {
 		    	int selectedNum=0;
 		    	System.out.println("-----log in Successfully----");
-		    	System.out.println("Enter number 1 For Menu :");
-		    	selectedNum = myObj.nextInt();  
+		    	//System.out.println("Enter number 1 For Menu :");
+		    	//selectedNum = myObj.nextInt();  
+		    	selectedNum=1;
 		  	int selectednumber=  mainmenu.CustomerMenuOptions(selectedNum,map);
 	    		
 	    	}
